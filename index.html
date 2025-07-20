@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TabyMakeup</title>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>  
+  <link rel="icon" href="logo.png" type="image/webp">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N8X2J1R1G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9N8X2J1R1G');
+</script>
+
+  <meta name="google-site-verification" content="aTtFU9wyUv7tkRIIpubXngUgniWqyFoYp6z2XCQ-LXY" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      <span class="nombre">Taby</span><span class="makeup">Makeup</span>
+    </h1>
+    <button id="scrollTopBtn" title="Volver arriba">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    
+    
+    <a href="carrito.html" class="carrito-flotante" data-count="0">
+      🛒
+      <span class="carrito-contador">0</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#todos">Todos los productos</a></li>
+        <li><a href="#iluminadores">Iluminadores y contornos</a></li>
+        <li><a href="#base">Base</a></li>
+        <li><a href="#brochas">Brochas</a></li>
+        <li><a href="#delineadores">Delineadores</a></li>
+        <li><a href="#fijador">Fijador</a></li>
+        <li><a href="#mascara">Máscara de pestañas</a></li>
+        <li><a href="#polvos">Polvos</a></li>
+        <li><a href="#rubor">Rubor</a></li>
+        <li><a href="#sombras">Sombras</a></li>
+        <li><a href="#arqueadores">Arqueadores</a></li>
+        <li><a href="#brillos">Brillos/Glitter</a></li>
+        <li><a href="#correctores">Correctores</a></li>
+        <li><a href="#esponjitas">Esponjitas</a></li>
+        <li><a href="#labiales">Labiales</a></li>
+        <li><a href="#pestanas-cejas">Pestaña/Cejas</a></li>
+        <li><a href="#primer">Primer</a></li>
+        <li><a href="#skincare">Skincare</a></li>
+        <li><a href="#uñas">Uñas</a></li>
+        <li><a href="#skalas">Skalas</a></li>
+        <li><a href="#varios">Varios</a></li>
+      </ul>
+    </nav> 
+  </header>
+  
+
+<section class="hero-banner">
+  <div class="hero-content">
+    <div class="hero-texto">
+      <span class="welcome-text">Bienvenidos a</span>
+      <span class="brand-name">TabyMakeup</span>
+      <p>Productos de calidad. Asesoramiento personalizado en cada compra.</p>
+      <div class="hero-btn-container">
+        <a href="#todos" class="hero-btn">
+          <i class="fas fa-star"></i> Ver productos
+        </a>
+        <a href="https://wa.me/5493735401893" target="_blank" class="hero-btn secondary">
+          <i class="fab fa-whatsapp"></i> Consultar
+        </a>
+      </div>
+      <div class="hero-social">
+        <a href="https://www.instagram.com/taby.makeup/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@taby.makeup23" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+    </div>
+    <!--
+    <div class="hero-imagen-container">
+      <img src="https://i.ibb.co/3Y1bfsVP/imagen.webp" alt="Maquillaje profesional" class="hero-imagen">
+    </div>
+  </div>
+  -->
+</section>
+  
+  <input type="text" id="searchInput" placeholder="Buscar producto..." />
+   
+<main>
+      <!-- Todos los productos -->
+   <!-- Todos los productos -->
+      <section id="todos" class="seccion-productos">
+        <h2>Todos los productos</h2>
+        <div class="productos-container" id="contenedor-todos"></div>
+      </section>
+
+    <section id="iluminadores" class="seccion-productos">
+      <h2>Iluminadores y contornos</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="base" class="seccion-productos">
+      <h2>Base</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="brochas" class="seccion-productos">
+      <h2>Brochas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="delineadores" class="seccion-productos">
+      <h2>Delineadores</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="fijador" class="seccion-productos">
+      <h2>Fijador</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="mascara" class="seccion-productos">
+      <h2>Máscara de pestañas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="polvos" class="seccion-productos">
+      <h2>Polvos</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="rubor" class="seccion-productos">
+      <h2>Rubor</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="sombras" class="seccion-productos">
+      <h2>Sombras</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="arqueadores" class="seccion-productos">
+      <h2>Arqueadores</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="brillos" class="seccion-productos">
+      <h2>Brillos/Glitter</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="correctores" class="seccion-productos">
+      <h2>Correctores</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="esponjitas" class="seccion-productos">
+      <h2>Esponjitas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="labiales" class="seccion-productos">
+      <h2>Labiales</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="pestanas-cejas" class="seccion-productos">
+      <h2>Pestañas/Cejas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="primer" class="seccion-productos">
+      <h2>Primer</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="skincare" class="seccion-productos">
+      <h2>Skincare</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="uñas" class="seccion-productos">
+      <h2>Uñas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="skalas" class="seccion-productos">
+      <h2>Skalas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
+    <section id="varios" class="seccion-productos">
+      <h2>Varios</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+  </main>
+
+ <footer>
+  <div class="footer-contenido">
+    <div class="footer-contacto">
+      <p><i class="fas fa-map-marker-alt"></i> Maipú y del Valle Iberlucea, Villa Ángela, Chaco</p>
+    </div>
+
+    <div class="footer-redes">
+      <a href="https://www.instagram.com/taby.makeup/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    
+      <a href="https://wa.me/5493735401893?text=Hola%20quiero%20hacer%20una%20consulta" target="_blank" aria-label="WhatsApp contacto">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.whatsapp.com/channel/0029VakE1TsLtOjJrkKlFO1R" target="_blank" aria-label="Canal de WhatsApp">
+        <i class="fas fa-bullhorn"></i>
+      </a>
+      <a href="https://chat.whatsapp.com/DHjxFQ96gIdFed6FHR1PQA" target="_blank" aria-label="Grupo de WhatsApp">
+        <i class="fas fa-users"></i>
+      </a>
+    </div>
+  </div>
+
+  <p class="footer-derechos">&copy; 2025 TabyMakeup. Todos los derechos reservados.</p>
+</footer>
+
+  <!-- Modal para tonos -->
+  <div id="modalTonos" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar">×</span>
+      <h2>Selecciona tu opción favorita</h2>
+      <div class="tonos-container"></div>
+      <div class="vista-previa">
+        <img id="imagenVistaPrevia" class="imagen-ampliable" alt="Vista previa de tono">
+      </div>
+      <button>Agregar al carrito</button>
+    </div>
+  </div>
+
+  <!-- Modal para imagen ampliada -->
+  <div id="modalImagen" class="modal-imagen">
+    <span class="cerrar-imagen">×</span>
+    <img class="contenido-imagen" id="imagenAmpliada">
+    <div class="pie-imagen"></div>
+  </div>
+  <script>
+    // Mostrar/ocultar el botón según scroll
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    };
+  
+    // Volver arriba
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

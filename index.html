@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,6 +24,7 @@
   <meta name="google-site-verification" content="aTtFU9wyUv7tkRIIpubXngUgniWqyFoYp6z2XCQ-LXY" />
 </head>
 <body>
+  
   <header>
     <h1 class="logo">
       <span class="nombre">Taby</span><span class="makeup">Makeup</span>
@@ -39,6 +41,7 @@
     </a>
     <nav>
       <ul>
+        <li><a href="#ofertas">Ofertas</a></li>
         <li><a href="#todos">Todos los productos</a></li>
         <li><a href="#iluminadores">Iluminadores y contornos</a></li>
         <li><a href="#base">Base</a></li>
@@ -99,7 +102,19 @@
   <input type="text" id="searchInput" placeholder="Buscar producto..." />
    
 <main>
-      <!-- Todos los productos -->
+    <section id="ofertas" class="seccion-productos">
+  <h2><i class="fas fa-fire"></i> Ofertas</h2>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Las diapositivas se agregarán dinámicamente aquí -->
+    </div>
+    <!-- Agrega navegación si lo deseas -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <!-- Agrega paginación si lo deseas -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
    <!-- Todos los productos -->
       <section id="todos" class="seccion-productos">
         <h2>Todos los productos</h2>
@@ -311,6 +326,8 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+
   <script type="module" src="script.js"></script>
 </body>
 </html>

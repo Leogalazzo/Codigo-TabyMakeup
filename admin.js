@@ -417,15 +417,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Función para obtener el emoji según el nombre del tono
-  function getToneIcon(toneName) {
-    const toneLower = toneName.toLowerCase();
-    if (toneLower.includes('lila')) return '📌';
-    if (toneLower.includes('salmón') || toneLower.includes('salmon')) return '📄';
-    if (toneLower.includes('amarillo')) return '📅';
-    return '🔹'; // Emoji por defecto
-  }
-
   // Renderizar productos
   function renderizarProductos(searchFilter = '', availabilityFilter = 'all') {
     cuerpoProductos.innerHTML = '';
@@ -459,12 +450,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="product-card-tones">
           ${producto.tonos && producto.tonos.length > 0
-            ? producto.tonos.filter(tono => tono.disponible).map(tono => `
-                <div style="margin: 5px 0; display: flex; align-items: center; gap: 5px;">
-                  ${getToneIcon(tono.nombre)} <img src="${tono.imagen}" alt="${tono.nombre}" class="tono-preview" data-src="${tono.imagen}" style="max-width: 30px; max-height: 30px; border-radius: 4px;">
-                </div>
+            ? producto.tonos.map(tono => `
+                <img src="${tono.imagen}" alt="${tono.nombre}" class="tono-preview" data-src="${tono.imagen}">
               `).join('')
-            : ''}
+            : '<p>Sin variantes</p>'}
         </div>
         <div class="product-card-actions">
           <button class="editar" data-id="${producto.id}">Editar</button>

@@ -1450,16 +1450,20 @@ main {
     max-width: 280px;
   }
 }
-.tono.no-disponible {
-  background-color: #d9d9d9;
-  color: #666;
-  border: 1px solid #bbb;
-  cursor: not-allowed;
-  opacity: 0.7;
+
+nav li a.highlight {
+  background-color: var(--rosa-oscuro);
+  color: var(--blanco);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.tono.no-disponible:hover {
-  background-color: #d9d9d9;
-  color: #666;
-  transform: none;
+nav li a.highlight:hover {
+  background-color: var(--rosa-principal);
+  transform: scale(1.05);
 }
+

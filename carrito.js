@@ -8,7 +8,6 @@ const btnEliminarTodo = document.getElementById('btn-eliminar-todo');
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD-P5-GOlwT-Ax51u3giJm1G-oXmfOf9-g",
   authDomain: "tabymakeup-of.firebaseapp.com",
@@ -18,11 +17,12 @@ const firebaseConfig = {
   appId: "1:548834143470:web:54812e64324b3629f617ff"
 };
 
-// Inicializar Firebase y Firestore
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Función para cargar productos desde Firestore
+// Imagen por defecto si no hay imagen disponible
+const imagenPlaceholder = 'https://plabi.justicia.es/o/subastas-theme/images/image-not-available.png';
+
 async function cargarProductos() {
   try {
     const snapshot = await getDocs(collection(db, "productos"));
@@ -33,7 +33,6 @@ async function cargarProductos() {
   }
 }
 
-// Verificar y actualizar el carrito con los datos actuales de Firestore
 async function actualizarCarrito() {
   let productosFirestore = [];
   try {
@@ -45,13 +44,14 @@ async function actualizarCarrito() {
   const productosActualizados = [];
   let hayProductosNoDisponibles = false;
   let mensajesCambio = [];
+  let mensajesPrecio = [];
 
   for (const item of carrito) {
     const productoFirestore = productosFirestore.find(p => p.id === item.id);
     if (productoFirestore) {
       let disponible = productoFirestore.disponible;
       let mensajeNoDisponible = '';
-      
+
       if (item.tono && productoFirestore.tonos) {
         const tonoEncontrado = productoFirestore.tonos.find(t => t.nombre === item.tono);
         if (!tonoEncontrado || !tonoEncontrado.disponible) {
@@ -60,57 +60,69 @@ async function actualizarCarrito() {
           mensajesCambio.push(`${item.nombre}${mensajeNoDisponible}`);
         }
       }
-      
+
       if (!disponible) {
         hayProductosNoDisponibles = true;
         productosActualizados.push({
           ...item,
           precio: productoFirestore.precio || item.precio,
-          nombre: productoFirestore.nombre + (item.tono ? ` - ${item.tono}` : '') + mensajeNoDisponible,
-          imagen: productoFirestore.imagen || 'placeholder.jpg',
+          nombre: item.nombre,
+          imagen: item.imagen || productoFirestore.imagen || imagenPlaceholder,
           disponible: false
         });
         continue;
       }
 
-      if (parseFloat(item.precio) !== parseFloat(productoFirestore.precio)) {
-        mensajesCambio.push(`${item.nombre} cambió de $${item.precio} a $${productoFirestore.precio}`);
+      const nuevoPrecio = parseFloat(productoFirestore.precio);
+      const precioAnterior = parseFloat(item.precio);
+      const nombreActualizado = productoFirestore.nombre + (item.tono ? ` - ${item.tono}` : '');
+
+      if (nuevoPrecio !== precioAnterior) {
+        const mensaje = `${nombreActualizado} cambió de $${precioAnterior.toFixed(2)} a $${nuevoPrecio.toFixed(2)}`;
+        mensajesCambio.push(mensaje);
+        mensajesPrecio.push(mensaje);
       }
 
       productosActualizados.push({
         ...item,
-        precio: productoFirestore.precio,
-        nombre: productoFirestore.nombre + (item.tono ? ` - ${item.tono}` : ''),
-        imagen: productoFirestore.imagen || 'placeholder.jpg',
+        precio: nuevoPrecio,
+        nombre: item.nombre,
+        imagen: item.imagen || productoFirestore.imagen || imagenPlaceholder,
         disponible: true
       });
+
     } else {
+      // Producto eliminado de Firestore
       productosActualizados.push({
         ...item,
-        disponible: item.disponible !== false // Preservar disponibilidad si Firestore falla
+        disponible: false,
+        imagen: item.imagen || imagenPlaceholder,
+        nombre: item.nombre
       });
-      mensajesCambio.push(`${item.nombre} no encontrado en la base de datos, se mantendrá en el carrito`);
+      hayProductosNoDisponibles = true;
+      mensajesCambio.push(`${item.nombre} ya no está disponible (eliminado del catálogo)`);
     }
   }
 
   carrito = productosActualizados;
   localStorage.setItem('carrito', JSON.stringify(carrito));
-  
+
   if (mensajesCambio.length > 0) {
-    console.log("Cambios en el carrito:", mensajesCambio.join('\n'));
-    // Opcional: Reactivar SweetAlert si lo prefieres
-    /*
+    console.log("Cambios en el carrito:\n" + mensajesCambio.join('\n'));
+  }
+
+  if (mensajesPrecio.length > 0) {
     Swal.fire({
-      title: 'Cambios en el carrito',
-      html: mensajesCambio.join('<br>'),
+      title: 'Precios actualizados',
+      html: mensajesPrecio.join('<br>'),
       icon: 'info',
       confirmButtonText: 'Aceptar'
     });
-    */
   }
 
   renderizarCarrito();
 }
+
 
 function renderizarCarrito() {
   listaCarrito.innerHTML = '';
@@ -128,9 +140,9 @@ function renderizarCarrito() {
   carrito.forEach((producto, index) => {
     const li = document.createElement('li');
     li.className = producto.disponible ? '' : 'no-disponible';
-    
+
     li.innerHTML = `
-      <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
+      <img src="${producto.imagen || imagenPlaceholder}" alt="${producto.nombre}" class="producto-imagen">
       <div class="producto-info">
         <span class="nombre-producto">${producto.nombre}</span>
         <span class="precio-producto">$${producto.precio}</span>
@@ -145,9 +157,9 @@ function renderizarCarrito() {
       </button>
       ${!producto.disponible ? '<span class="no-disponible-badge">No disponible</span>' : ''}
     `;
-    
+
     listaCarrito.appendChild(li);
-    
+
     if (producto.disponible) {
       total += producto.precio * producto.cantidad;
     } else {
@@ -156,7 +168,7 @@ function renderizarCarrito() {
   });
 
   totalElemento.textContent = total.toFixed(2);
-  
+
   if (hayProductosNoDisponibles) {
     const advertencia = document.createElement('div');
     advertencia.className = 'advertencia-no-disponible';
@@ -170,6 +182,7 @@ function renderizarCarrito() {
   if (btnWhatsApp) {
     btnWhatsApp.disabled = hayProductosNoDisponibles || carrito.length === 0;
   }
+
   actualizarWhatsApp();
 }
 
@@ -189,14 +202,9 @@ if (btnEliminarTodo) {
 }
 
 function actualizarWhatsApp() {
-  console.log("Ejecutando actualizarWhatsApp", carrito);
-  if (!btnWhatsApp) {
-    console.error("Botón WhatsApp no encontrado");
-    return;
-  }
-  
+  if (!btnWhatsApp) return;
+
   if (carrito.length === 0 || carrito.some(p => !p.disponible)) {
-    console.log("Botón deshabilitado: carrito vacío o productos no disponibles");
     btnWhatsApp.disabled = true;
     return;
   }
@@ -209,13 +217,11 @@ function actualizarWhatsApp() {
     mensaje += `  Subtotal: $${producto.precio * producto.cantidad}\n\n`;
   });
 
-  let total = carrito.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
-  mensaje += `*Total del pedido:* $${total.toFixed(2)}\n\n`;
-  mensaje += "¡Gracias! ";
+  const total = carrito.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
+  mensaje += `*Total del pedido:* $${total.toFixed(2)}\n\n¡Gracias!`;
 
   const telefono = "5493735401893";
   const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-  console.log("URL generada:", url);
 
   btnWhatsApp.disabled = false;
   btnWhatsApp.onclick = () => {
@@ -231,7 +237,6 @@ function actualizarWhatsApp() {
         Swal.showLoading();
       },
       didClose: () => {
-        console.log("Botón WhatsApp clickeado");
         window.open(url, '_blank');
         setTimeout(() => {
           carrito = [];

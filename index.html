@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -102,19 +101,13 @@
   <input type="text" id="searchInput" placeholder="Buscar producto..." />
    
 <main>
-    <section id="ofertas" class="seccion-productos">
-  <h2><i class="fas fa-fire"></i> Ofertas</h2>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <!-- Las diapositivas se agregarán dinámicamente aquí -->
-    </div>
-    <!-- Agrega navegación si lo deseas -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <!-- Agrega paginación si lo deseas -->
-    <div class="swiper-pagination"></div>
-  </div>
-</section>
+       <section id="ofertas" class="seccion-productos">
+      <h2>Ofertas destacadas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+
    <!-- Todos los productos -->
       <section id="todos" class="seccion-productos">
         <h2>Todos los productos</h2>
@@ -326,8 +319,6 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-
   <script type="module" src="script.js"></script>
 </body>
 </html>

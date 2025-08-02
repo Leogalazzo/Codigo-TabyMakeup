@@ -1771,3 +1771,9 @@ ofertas {
   }
 }
 
+.mensaje-sin-ofertas {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+  margin: 1rem 0;
+}

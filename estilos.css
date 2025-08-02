@@ -1467,3 +1467,307 @@ nav li a.highlight:hover {
   transform: scale(1.05);
 }
 
+/* ==================== */
+/* SECCIÓN OFERTAS - ESTILO MEJORADO */
+/* ==================== */
+ofertas {
+    position: relative;
+    padding: 2rem 0;
+    margin: 3rem 0;
+    background: #fff9fa; /* Fondo blanco rosado */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(216, 90, 127, 0.25);
+    border-top: 4px solid var(--rosa-oscuro);
+    border-bottom: 4px solid var(--rosa-oscuro);
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#ofertas:hover {
+    box-shadow: 0 8px 25px rgba(216, 90, 127, 0.35);
+    transform: translateY(-3px);
+}
+
+#ofertas::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+              rgba(255, 105, 180, 0.15) 0%, 
+              rgba(216, 90, 127, 0.15) 50%, 
+              rgba(255, 155, 179, 0.15) 100%);
+    z-index: 1;
+    animation: glitter 6s ease infinite;
+}
+
+#ofertas::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+              var(--rosa-principal), 
+              #ff69b4, 
+              var(--rosa-oscuro));
+    animation: glitter 5s ease infinite;
+}
+
+#ofertas h2 {
+    color: #d85a7f; /* Rosa oscuro intenso */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 3px rgba(255, 192, 203, 0.4);
+    letter-spacing: 1px;
+}
+
+#ofertas h2::before {
+    content: "✨";
+    margin-right: 10px;
+    font-size: 1.3rem;
+    animation: glitter 2s infinite;
+}
+
+#ofertas h2::after {
+    content: "✨";
+    margin-left: 10px;
+    font-size: 1.3rem;
+    animation: glitter 2s infinite 0.5s;
+}
+
+#ofertas .productos-container {
+    position: relative;
+    z-index: 2;
+}
+
+#ofertas .producto {
+    background: #fff9fa;
+    border: 2px dashed var(--rosa-principal);
+    position: relative;
+}
+
+#ofertas .producto::after {
+    content: "OFERTA";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--dorado);
+    color: var(--rosa-oscuro);
+    font-weight: bold;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+
+/* Efecto especial para productos en oferta */
+#ofertas .producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(216, 90, 127, 0.25);
+    border-color: var(--dorado);
+}
+
+/* Media queries para consistencia responsive */
+@media (min-width: 576px) {
+    #ofertas h2 {
+        font-size: 1.8rem;
+    }
+    
+    #ofertas h2::before,
+    #ofertas h2::after {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #ofertas h2 {
+        font-size: 2rem;
+    }
+    
+    #ofertas .producto::after {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* ==================== */
+/* ESTILOS PARA TONOS EN MODAL - VERSIÓN MEJORADA */
+/* ==================== */
+
+.tono-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+  min-width: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--rosa-claro);
+  transition: var(--transicion);
+}
+
+.tono-item:hover {
+  background-color: rgba(255, 192, 203, 0.2);
+}
+
+.nombre-tono {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: var(--negro);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.nombre-tono.no-disponible {
+  color: #999;
+  text-decoration: line-through;
+}
+
+.no-disponible-text {
+  color: var(--rosa-oscuro);
+  font-size: 0.75rem;
+  font-weight: bold;
+  background-color: rgba(255, 192, 203, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.tono {
+  background-color: var(--rosa-claro);
+  color: var(--texto-oscuro);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transicion);
+  box-shadow: 0 2px 5px rgba(216, 90, 127, 0.1);
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.tono:hover {
+  background-color: var(--rosa-principal);
+  color: var(--blanco);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(216, 90, 127, 0.2);
+}
+
+.tono.seleccionado {
+  background-color: var(--rosa-oscuro);
+  color: var(--blanco);
+  box-shadow: 0 0 0 2px var(--blanco), 0 0 0 4px var(--rosa-oscuro);
+  transform: scale(1.03);
+}
+
+/* ==================== */
+/* AJUSTES PARA EL CONTENEDOR DE TONOS */
+/* ==================== */
+.tonos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+/* ==================== */
+/* VISTA PREVIA DE TONO SELECCIONADO */
+/* ==================== */
+.vista-previa {
+  background-color: rgba(255, 192, 203, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px dashed var(--rosa-claro);
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vista-previa.mostrar {
+  display: flex;
+}
+
+.vista-previa h3 {
+  color: var(--rosa-oscuro);
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+#imagenVistaPrevia {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+  border: 2px solid var(--rosa-claro);
+  box-shadow: 0 4px 12px rgba(216, 90, 127, 0.15);
+  transition: var(--transicion);
+}
+
+#imagenVistaPrevia:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(216, 90, 127, 0.25);
+}
+
+/* ==================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ==================== */
+@media (max-width: 576px) {
+  .tonos-container {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.6rem;
+  }
+  
+  .tono-item {
+    padding: 0.6rem;
+    min-width: 80px;
+  }
+  
+  .nombre-tono {
+    font-size: 0.8rem;
+  }
+  
+  .tono {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  #imagenVistaPrevia {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tonos-container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .tono-item {
+    min-width: 110px;
+  }
+  
+  #imagenVistaPrevia {
+    max-width: 220px;
+    max-height: 220px;
+  }
+}
+

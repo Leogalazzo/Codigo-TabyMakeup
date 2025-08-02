@@ -86,22 +86,44 @@ document.addEventListener('DOMContentLoaded', function() {
       );
     }
 
-    // Renderizar productos o mensaje de no resultados
-    if (productosFiltrados.length === 0 && filtro) {
-      contenedorTodos.innerHTML = `<p class="sin-resultados">No se encontraron productos para "${filtro}"</p>`;
-    } else {
-      productosFiltrados.forEach(producto => {
-        const productoHTML = crearHTMLProducto(producto);
-        contenedorTodos.innerHTML += productoHTML;
-        if (!filtro) {
-          const seccion = document.getElementById(producto.categoria);
-          if (seccion) {
-            const contenedor = seccion.querySelector(".productos-container");
-            if (contenedor) contenedor.innerHTML += productoHTML;
-          }
-        }
-      });
+   // Renderizar productos o mensaje de no resultados
+if (productosFiltrados.length === 0 && filtro) {
+  contenedorTodos.innerHTML = `<p class="sin-resultados">No se encontraron productos para "${filtro}"</p>`;
+} else {
+  productosFiltrados.forEach(producto => {
+    const productoHTML = crearHTMLProducto(producto);
+    contenedorTodos.innerHTML += productoHTML;
+    if (!filtro) {
+      const seccion = document.getElementById(producto.categoria);
+      if (seccion) {
+        const contenedor = seccion.querySelector(".productos-container");
+        if (contenedor) contenedor.innerHTML += productoHTML;
+      }
     }
+  });
+
+  // Mostrar u ocultar mensaje en la sección de ofertas
+  const seccionOfertas = document.getElementById('ofertas');
+  if (seccionOfertas) {
+    let mensajeSinOfertas = seccionOfertas.querySelector('.mensaje-sin-ofertas');
+
+    // Crear el mensaje si no existe
+    if (!mensajeSinOfertas) {
+      mensajeSinOfertas = document.createElement('p');
+      mensajeSinOfertas.className = 'mensaje-sin-ofertas';
+      mensajeSinOfertas.textContent = 'No hay ofertas disponibles en este momento.';
+      mensajeSinOfertas.style.display = 'none';
+      seccionOfertas.insertBefore(mensajeSinOfertas, seccionOfertas.querySelector('.productos-container'));
+    }
+
+    const contenedorOfertas = seccionOfertas.querySelector('.productos-container');
+    if (contenedorOfertas && contenedorOfertas.children.length === 0) {
+      mensajeSinOfertas.style.display = 'block';
+    } else {
+      mensajeSinOfertas.style.display = 'none';
+    }
+  }
+}
 
     // Ocultar secciones vacías o no relevantes
     secciones.forEach(seccion => {
@@ -116,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
     configurarBotonesAgregar();
     lightbox.init();
   }
+
+
 
   // Función para crear el HTML de un producto
   function crearHTMLProducto(producto) {

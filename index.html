@@ -97,7 +97,38 @@
   -->
 </section>
   
-  <input type="text" id="searchInput" placeholder="Buscar producto..." />
+  <div class="buscador-container">
+      <input type="text" id="searchInput" placeholder="Busca productos o categorías...">
+      <select id="categoriaFiltro">
+        <option value="all">Todas las categorías</option>
+        <option value="iluminadores">Iluminadores y contornos</option>
+        <option value="base">Base</option>
+        <option value="brochas">Brochas</option>
+        <option value="delineadores">Delineadores</option>
+        <option value="fijador">Fijador</option>
+        <option value="mascara">Máscara de pestañas</option>
+        <option value="polvos">Polvos</option>
+        <option value="rubor">Rubor</option>
+        <option value="sombras">Sombras</option>
+        <option value="arqueadores">Arqueadores</option>
+        <option value="brillos">Brillos/Glitter</option>
+        <option value="correctores">Correctores</option>
+        <option value="esponjitas">Esponjitas</option>
+        <option value="labiales">Labiales</option>
+        <option value="pestanas">Pestañas/Cejas</option>
+        <option value="primer">Primer</option>
+        <option value="skincare">Skincare</option>
+        <option value="unas">Uñas</option>
+        <option value="skalas">Skalas</option>
+        <option value="varios">Varios</option>
+      </select>
+      <select id="disponibilidadFiltro">
+        <option value="all">Todas</option>
+        <option value="available">Disponibles</option>
+        <option value="unavailable">No disponibles</option>
+      </select>
+      <div id="loadingIndicator" class="loading-indicator">Cargando...</div>
+    </div>
    
 <main>
        <section id="ofertas" class="seccion-productos">
@@ -321,4 +352,3 @@
   <script type="module" src="script.js"></script>
 </body>
 </html>
-

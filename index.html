@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>  
-  <link rel="icon" href="logo.png" type="image/webp">
+  <link rel="icon" href="https://i.ibb.co/bRKcnmcc/imagen.webp" type="image/webp">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N8X2J1R1G"></script>
 <script>
@@ -97,38 +97,38 @@
   -->
 </section>
   
-  <div class="buscador-container">
-      <input type="text" id="searchInput" placeholder="Busca productos o categorías...">
-      <select id="categoriaFiltro">
-        <option value="all">Todas las categorías</option>
-        <option value="iluminadores">Iluminadores y contornos</option>
-        <option value="base">Base</option>
-        <option value="brochas">Brochas</option>
-        <option value="delineadores">Delineadores</option>
-        <option value="fijador">Fijador</option>
-        <option value="mascara">Máscara de pestañas</option>
-        <option value="polvos">Polvos</option>
-        <option value="rubor">Rubor</option>
-        <option value="sombras">Sombras</option>
-        <option value="arqueadores">Arqueadores</option>
-        <option value="brillos">Brillos/Glitter</option>
-        <option value="correctores">Correctores</option>
-        <option value="esponjitas">Esponjitas</option>
-        <option value="labiales">Labiales</option>
-        <option value="pestanas">Pestañas/Cejas</option>
-        <option value="primer">Primer</option>
-        <option value="skincare">Skincare</option>
-        <option value="unas">Uñas</option>
-        <option value="skalas">Skalas</option>
-        <option value="varios">Varios</option>
-      </select>
-      <select id="disponibilidadFiltro">
-        <option value="all">Todas</option>
-        <option value="available">Disponibles</option>
-        <option value="unavailable">No disponibles</option>
-      </select>
-      <div id="loadingIndicator" class="loading-indicator">Cargando...</div>
-    </div>
+<div class="buscador-container">
+  <input type="text" id="searchInput" placeholder="Busca productos o categorías...">
+  <select id="categoriaFiltro">
+    <option value="all">Todas las categorías</option>
+    <option value="iluminadores">Iluminadores y contornos</option>
+    <option value="base">Base</option>
+    <option value="brochas">Brochas</option>
+    <option value="delineadores">Delineadores</option>
+    <option value="fijador">Fijador</option>
+    <option value="mascara">Máscara de pestañas</option>
+    <option value="polvos">Polvos</option>
+    <option value="rubor">Rubor</option>
+    <option value="sombras">Sombras</option>
+    <option value="arqueadores">Arqueadores</option>
+    <option value="brillos">Brillos/Glitter</option>
+    <option value="correctores">Correctores</option>
+    <option value="esponjitas">Esponjitas</option>
+    <option value="labiales">Labiales</option>
+    <option value="pestanas">Pestañas/Cejas</option>
+    <option value="primer">Primer</option>
+    <option value="skincare">Skincare</option>
+    <option value="unas">Uñas</option>
+    <option value="skalas">Skalas</option>
+    <option value="varios">Varios</option>
+  </select>
+  <select id="disponibilidadFiltro">
+    <option value="all">Todas</option>
+    <option value="available">Disponibles</option>
+    <option value="unavailable">No disponibles</option>
+  </select>
+  <div id="loadingIndicator" class="loading-indicator">Cargando...</div>
+</div>
    
 <main>
        <section id="ofertas" class="seccion-productos">
@@ -324,11 +324,22 @@
     </div>
   </div>
 
-  <!-- Modal para imagen ampliada -->
+  <!-- Modal para imagen ampliada mejorado -->
   <div id="modalImagen" class="modal-imagen">
-    <span class="cerrar-imagen">×</span>
-    <img class="contenido-imagen" id="imagenAmpliada">
-    <div class="pie-imagen"></div>
+    <div class="modal-imagen-content">
+      <span class="cerrar-imagen">×</span>
+      <div class="indicador-zoom">Zoom: 100%</div>
+      <div class="contador-imagen">1 de 1</div>
+      <img class="contenido-imagen" id="imagenAmpliada">
+      <div class="pie-imagen"></div>
+      <div class="controles-zoom">
+        <button class="btn-zoom" id="btnZoomOut" title="Reducir zoom">−</button>
+        <button class="btn-zoom" id="btnZoomReset" title="Zoom original">⌂</button>
+        <button class="btn-zoom" id="btnZoomIn" title="Aumentar zoom">+</button>
+      </div>
+      <button class="nav-imagen prev" id="btnPrev" title="Imagen anterior">‹</button>
+      <button class="nav-imagen next" id="btnNext" title="Siguiente imagen">›</button>
+    </div>
   </div>
   <script>
     // Mostrar/ocultar el botón según scroll
